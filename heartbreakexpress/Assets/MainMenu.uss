@@ -1,0 +1,14 @@
+.button {
+    left: auto;
+}
+
+.button:hover {
+    transition-property: all, ignored;
+    transition-duration: 0s, 0s;
+    transition-timing-function: ease, ease;
+    transition-delay: 0s, 0s;
+    border-left-color: rgba(171, 72, 72, 255);
+    border-right-color: rgba(171, 72, 72, 255);
+    border-top-color: rgba(171, 72, 72, 255);
+    border-bottom-color: rgba(171, 72, 72, 255);
+}
