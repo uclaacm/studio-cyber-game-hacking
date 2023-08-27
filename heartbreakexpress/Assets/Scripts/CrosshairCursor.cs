@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+/*
+ * This replaces the cursor with a little heart crosshair
+ */
 public class CrosshairCursor : MonoBehaviour {
     Vector2 mousePos;
     
@@ -13,10 +16,7 @@ public class CrosshairCursor : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        
-        // Vector2 screenPosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-        // Vector2 worldPosition = Camera.main.ScreenToWorldPoint(screenPosition);
-        
+
         // Move the gameObject with the cursor
         mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
         transform.position = mousePos;

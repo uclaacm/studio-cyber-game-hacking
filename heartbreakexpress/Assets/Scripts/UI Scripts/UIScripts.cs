@@ -10,6 +10,10 @@ public class UIScripts : MonoBehaviour
 {
 
     [SerializeField] GameObject panel;
+
+    [SerializeField] GameObject panelSwitch;
+    [SerializeField] GameObject panelSwitch2;
+    
     //[SerializeField] GameObject pauseMenu;
     
     private GameObject[] spawners;
@@ -22,6 +26,7 @@ public class UIScripts : MonoBehaviour
     public void navButton(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
+        UnityEngine.Debug.Log(sceneName);
     }
     // For when people no longer wish to shoot from a mail gun
     public void quitGame()
@@ -37,6 +42,21 @@ public class UIScripts : MonoBehaviour
             bool isActive = panel.activeSelf;
             panel.SetActive(!isActive);
         }
+        UnityEngine.Debug.Log("Panel.");
+    }
+    public void panelSwap()
+    {
+        if (panelSwitch != null)
+        {
+            bool isActive = panel.activeSelf;
+            panelSwitch.SetActive(!isActive);
+        }
+        if (panelSwitch2 != null)
+        {
+            bool isActive = panel.activeSelf;
+            panelSwitch2.SetActive(!isActive);
+        }
+        
         UnityEngine.Debug.Log("Panel.");
     }
     // ZA WARUDO!!!! TOKI WO TOMARE 

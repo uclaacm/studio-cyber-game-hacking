@@ -2,9 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Draws the envelopes onto the screen to keep track of player lives. 
+ */
+
 public class HealthSystem : MonoBehaviour
 {
-    //Change hearts image when gameObject (enemy) exits trigger boarder
+    //Change hearts image when gameObject (enemy) exits trigger border
     [SerializeField] private GameObject LiveHeartPrefab;
     [SerializeField] private GameObject DeadHeartPrefab;
 

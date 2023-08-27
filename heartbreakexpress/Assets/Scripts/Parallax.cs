@@ -3,6 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * This script adds the aesthetic effect of parallax, where the foreground moves faster than the background while in a moving vehicle. 
+ */
+
 public class Parallax : MonoBehaviour
 {
     private Material _material;

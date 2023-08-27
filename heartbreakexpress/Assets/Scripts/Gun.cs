@@ -6,15 +6,13 @@ using UnityEngine.InputSystem;
 using TMPro;
 using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
+using static UnityEditor.PlayerSettings;
 
 public class Gun : MonoBehaviour {
 
     public Vector3 mousePosition;
     public float angle;
     public Vector2 direction;
-
-    public Ray ray;
-    public RaycastHit2D hit;
 
     bool cooldown = false;
     [SerializeField] float cooldownTime = 2f;
@@ -37,6 +35,7 @@ public class Gun : MonoBehaviour {
     int randomEnv;
 
     // Start is called before the first frame update
+    // Fill up the envAmmo array with all the possible envelope sprites
     void Start() {
         if (envAmmo == null) {
             envAmmo = Resources.LoadAll("EnvelopeAmmoSprites", typeof(Sprite));
@@ -46,7 +45,7 @@ public class Gun : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         
-        // Rotate the gun around a point to face the mouse
+        // Rotates the gun around a point to face the mouse
         mousePosition = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
         direction = mousePosition - transform.position;
         angle = Vector2.SignedAngle(transform.up, direction);
@@ -61,41 +60,31 @@ public class Gun : MonoBehaviour {
         if (Time.time < canShoot) {
             return;
         }
-        
-        // to get game object of thing hit if smth is hit
-        ray = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
-        hit = Physics2D.Raycast(ray.origin, ray.direction, Mathf.Infinity);
-        
-        // I'm not sure this section is needed but it might make the animations look better, I'm not sure I haven't tested it on a moving truck yet
-        if (hit.collider != null && hit.collider.gameObject.CompareTag("Person")) {
-            // Debug.Log(hit.collider.gameObject.name);
-            target = hit.collider.gameObject.transform.position;
-            
-            // personHit offset if needed to make animations look better?
-        } else {
-            // Debug.Log("hit something else");
-            target = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-        }
 
         // record time of cooldown ending
         canShoot = Time.time + cooldownTime;
 
+        GetComponent<AudioSource>().Play();
+
+        // get a random envelope sprite, set the target of the envelope to mouse cursor location, normalize vector towards firing direction
         randomEnv = UnityEngine.Random.Range(0, envAmmo.Length);
-        
-        // target acquired, shoot envelope
-        fireDirection = target - new Vector2(transform.position.x, transform.position.y);
-        fireDirection.Normalize();
-        envRotation = UnityEngine.Random.rotation;
-        envRotation.x = Quaternion.identity.x;
-        envRotation.y = Quaternion.identity.y;
+        target = mousePosition;
+        fireDirection = direction.normalized;
+
+        // Instantiate an envelope to be shot with a random rotation and random sprite
+        envRotation = new Quaternion(Quaternion.identity.x, Quaternion.identity.y, Random.Range(-1f, 1f), Random.Range(-1f, 1f));
         shotEnvelope = Instantiate(Envelope, rotationPoint.position, envRotation);
         shotEnvelope.GetComponent<SpriteRenderer>().sprite = Instantiate(envAmmo[randomEnv]) as Sprite;
+
+        // Shoot the envelope, and start the scaleOverTime coroutine
         envelopeRb = shotEnvelope.GetComponent<Rigidbody2D>();
         envelopeRb.velocity = fireDirection * fireSpeed;
         isScaling = false;
         StartCoroutine(scaleOverTime(shotEnvelope, new Vector3(0.003f, 0.003f, 0f), 2f));
     }
 
+    // This coroutine makes the envelope get smaller the longer it's on the screen. When the envelope is too small, the gameobject will be destroyed.
+    // I do not know how it works.
     IEnumerator scaleOverTime(GameObject flyingEnv, Vector3 toScale, float duration) {
         // Debug.Log("Scaling Coroutine");
 
@@ -123,6 +112,7 @@ public class Gun : MonoBehaviour {
 
     }
 
+    // When left click, shoot
     void OnShoot(InputValue value) {
         Shoot();
     }

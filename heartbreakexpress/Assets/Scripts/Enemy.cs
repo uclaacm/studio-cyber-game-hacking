@@ -2,10 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+/*
+ * This script is attached to each enemy object and controls its appearance, spawn position, and movement speed. 
+ * It damages the player when it reaches the player and increments the score when destroyed by an envelope. 
+ * The script playerHealth determines player health and score. 
+ */
+
+public class Enemy : MonoBehaviour 
 {
     [SerializeField] private Sprite[] sprites;
-    // [SerializeField] private Transform[] spawnPoints;
 
     private float startScale=.2f;
     private float endScale=1f;
@@ -19,13 +24,12 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
-        // Randomly picks sprite and spawn point
+        // Randomly picks an enemy sprite from a list of sprites and a random spawn location given a range
         this.GetComponent<SpriteRenderer>().sprite = sprites[Random.Range(0, sprites.Length)];
         this.transform.position = new Vector3(Random.Range(-16f, 14f), -.1f, 0f);
         startPos = this.transform.position;
-        // this.transform.position = spawnPoints[Random.Range(0,spawnPoints.Length)].position + new Vector3(((Time.time - EnemySpawner.startTime) * .2f) % 31,0f,0f);
 
-        // Increases speed based on time since start of the game
+        // Increases enemy move speed based on time since start of the game
         float timeSinceStart = Time.time - EnemySpawner.startTime;
         time = Vector3.Distance(playerPos, this.transform.position) / (timeSinceStart % 5 / 5 + .5f);
         timer = 0f;
@@ -34,11 +38,17 @@ public class Enemy : MonoBehaviour
 
     // Update is called once per frame
     void FixedUpdate() {
+        // each frame, moves the enemy towards playerPos 
+        // Vector3.Lerp: https://docs.unity3d.com/ScriptReference/Vector3.Lerp.html
         timer += Time.fixedDeltaTime;
         this.transform.position = Vector3.Lerp(startPos, playerPos, timer / time);
+        
+        // each frame, makes the enemy larger as it gets closer to playerPos
         float temp = Mathf.Lerp(startScale, endScale, timer / time);
         this.transform.localScale = new Vector3(temp, temp, temp);
 
+        // checks if the enemy has reached player position
+        // if the enemy has, damage the player and destroy the enemy object
         if (timer > time)
         {
           playerHealth.inst.DamagePlayer(1);
@@ -46,7 +56,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    // When the envelope collides with itself, play animation, add score, and delete the envelope game object
+    // When the envelope collides with the enemy, play animation, add score, and delete the envelope game object
     void OnTriggerEnter2D(Collider2D col) {
         if (col.gameObject.tag == "Envelope")
         {
