@@ -77,6 +77,7 @@ public class Gun : MonoBehaviour {
         shotEnvelope.GetComponent<SpriteRenderer>().sprite = Instantiate(envAmmo[randomEnv]) as Sprite;
 
         // Shoot the envelope, and start the scaleOverTime coroutine
+        // HACKABLE: Envelope shrinks the longer it's on screen. Can you make it larger or prevent it from shrinking for a wider range?
         envelopeRb = shotEnvelope.GetComponent<Rigidbody2D>();
         envelopeRb.velocity = fireDirection * fireSpeed;
         isScaling = false;

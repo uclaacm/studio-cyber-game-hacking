@@ -26,6 +26,7 @@ public class EnemySpawner : MonoBehaviour
     // Basically a function that runs in parallel with other functions that is capable of being stopped and restarted (unlike Update() which is constantly running)
     // While canSpawn is true, the coroutine will wait a couple seconds (spawnRate) before instantiating an enemy object
     // It also randomizes the enemy's understanding of playerPos by adding noise to it
+    // HACKABLE: Enemies spawn at a random location. Can you change this so they always spawn in the same place?
     private IEnumerator Spawner() {
         WaitForSeconds wait = new WaitForSeconds(spawnRate); 
 

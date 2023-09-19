@@ -49,6 +49,7 @@ public class Enemy : MonoBehaviour
 
         // checks if the enemy has reached player position
         // if the enemy has, damage the player and destroy the enemy object
+        // HACKABLE: can you avoid being damaged by enemies, even if they reach your position?
         if (timer > time)
         {
           playerHealth.inst.DamagePlayer(1);
@@ -56,6 +57,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    // HACKABLE: This is called on collision with an envelope. Can we change when it's called? Increase Collider size?
     // When the envelope collides with the enemy, play animation, add score, and delete the envelope game object
     void OnTriggerEnter2D(Collider2D col) {
         if (col.gameObject.tag == "Envelope")

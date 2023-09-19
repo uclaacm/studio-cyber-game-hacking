@@ -12,6 +12,7 @@ public class playerHealth : MonoBehaviour
 {
     public static playerHealth inst;
 
+    //HACKABLE: Look into increasing maxHearts. Is it possible to never lose health
     public int hearts = 3;
     public int maxHearts = 3;
     [SerializeField] public HealthSystem hs;
@@ -52,6 +53,7 @@ public class playerHealth : MonoBehaviour
     }
     
     // adds +1 to player score
+    // HACKABLE: Where is this function called? Can you change its behavior or call it more often?
     public void AddScore()
     {
         playerScore += 1;
