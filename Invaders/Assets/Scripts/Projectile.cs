@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour, IPooledGameObject
 {
+    public int Damage => _damage;
+
     [SerializeField] float force = 1;
     [SerializeField] float expireTime = 5;
     [SerializeField] int bulletValue = 1;     // How many player bullets this projectile corresponds to
-    [SerializeField] int damage = 5;
+    [SerializeField] int _damage = 5;
     float timeOfEnable = 0;
-
 
 
     // We make this setter so that the launchers can set themselves as the ones that their projectiles should not damage 
@@ -81,7 +82,7 @@ public class Projectile : MonoBehaviour, IPooledGameObject
         {
             if(other.CompareTag(_noDamageTag)) {return;}        // Don't do anything if the object is tagged with an ignore damage tag
 
-            healthStat.TakeDamage(damage);
+            healthStat.TakeDamage(_damage);
             Vanish();
 
         }

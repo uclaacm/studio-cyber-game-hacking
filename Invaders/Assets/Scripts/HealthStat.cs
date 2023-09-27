@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class HealthStat : MonoBehaviour
 {
-    [SerializeField] float maxHealth = 100;
-    [SerializeField] float currentHealth = 100;
+    [SerializeField] float _maxHealth = 100;
+    [SerializeField] float _currentHealth = 100;
+
+    public float MaxHealth => _maxHealth;
+    public float CurrentHealth => _currentHealth;
 
     public event System.Action OnUnitKilled;
 
@@ -14,21 +17,21 @@ public class HealthStat : MonoBehaviour
     void Awake()
     {
 
-        if(currentHealth > maxHealth)       // If current health should not be greater than max health
-            currentHealth = maxHealth;
-        if(currentHealth <= 0)
-            currentHealth = 1;              // Unit cannot start off with less than 1 hp
+        if(_currentHealth > _maxHealth)       // If current health should not be greater than max health
+            _currentHealth = _maxHealth;
+        if(_currentHealth <= 0)
+            _currentHealth = 1;              // Unit cannot start off with less than 1 hp
     }
 
     public void TakeDamage(float dmg)
     {
-        if(currentHealth <= 0) {return;}    // We don't want to constantly be invoking the damaged/killed events even after the unit has died
+        if(_currentHealth <= 0) {return;}    // We don't want to constantly be invoking the damaged/killed events even after the unit has died
 
-        currentHealth -= dmg;
+        _currentHealth -= dmg;
 
-        OnUnitDamaged?.Invoke(new HealthInfo(maxHealth, currentHealth));
+        OnUnitDamaged?.Invoke(new HealthInfo(_maxHealth, _currentHealth));
 
-        if(currentHealth <= 0)
+        if(_currentHealth <= 0)
         {
             OnUnitKilled?.Invoke();     // If the unit has died, then give broadcast
 

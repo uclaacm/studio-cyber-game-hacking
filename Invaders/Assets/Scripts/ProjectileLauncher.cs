@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class ProjectileLauncher : MonoBehaviour
 {
+    public float ShotsPerSecond => _shotsPerSecond;
+
     [SerializeField] Transform firePoint;
-    [SerializeField] float shotsPerSecond = 1;
+    [SerializeField] float _shotsPerSecond = 1;
 
     [SerializeField] PoolType poolType = PoolType.basic;
-    ProjectilePool pool;
+
+    public ProjectilePool Pool => _pool;
+    ProjectilePool _pool;
 
 
     [SerializeField] bool burst = false;
@@ -35,21 +39,21 @@ public class ProjectileLauncher : MonoBehaviour
 
     void Awake()
     {
-        if(pool == null)
+        if(_pool == null)
         {
             switch(poolType)
             {
                 case PoolType.basic:
-                    pool = GameObject.Find("Basic Bullet Pool").GetComponent<ProjectilePool>();
+                    _pool = GameObject.Find("Basic Bullet Pool").GetComponent<ProjectilePool>();
                     break;
                 case PoolType.fast:
-                    pool = GameObject.Find("Fast Bullet Pool").GetComponent<ProjectilePool>();
+                    _pool = GameObject.Find("Fast Bullet Pool").GetComponent<ProjectilePool>();
                     break;
                 case PoolType.cool:
-                    pool = GameObject.Find("Cool Bullet Pool").GetComponent<ProjectilePool>();
+                    _pool = GameObject.Find("Cool Bullet Pool").GetComponent<ProjectilePool>();
                     break;
                 case PoolType.chonk:
-                    pool = GameObject.Find("Chonk Bullet Pool").GetComponent<ProjectilePool>();
+                    _pool = GameObject.Find("Chonk Bullet Pool").GetComponent<ProjectilePool>();
                     break;
             }
         }
@@ -63,7 +67,7 @@ public class ProjectileLauncher : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(firePoint == null || pool == null) {return;}
+        if(firePoint == null || _pool == null) {return;}
 
         if(isLocked)
         {
@@ -71,7 +75,7 @@ public class ProjectileLauncher : MonoBehaviour
             return;
         }
 
-        if(Time.time - lastShot > 1/shotsPerSecond)
+        if(Time.time - lastShot > 1/_shotsPerSecond)
         {
             lastShot = Time.time;       // We want to update the last shot time regardless of whether any bullets are actually shot to prevent constant checking of this loop in the case nothing is shot
 
@@ -85,7 +89,7 @@ public class ProjectileLauncher : MonoBehaviour
             }
             _isShooting = true;
 
-            var newProj = pool.Get();       // This is where we try to get another projectile from the queue (note that the projectiles will automatically enqueue themselves back in after expiring)
+            var newProj = _pool.Get();       // This is where we try to get another projectile from the queue (note that the projectiles will automatically enqueue themselves back in after expiring)
 
             
 
@@ -113,7 +117,7 @@ public class ProjectileLauncher : MonoBehaviour
     }
 
 
-    public float GetShotsPerSecond() => shotsPerSecond;     // This is used by the laser sound effect manager to determine how fast to play the loop
+    public float GetShotsPerSecond() => _shotsPerSecond;     // This is used by the laser sound effect manager to determine how fast to play the loop
 
     void OnDisable()
     {

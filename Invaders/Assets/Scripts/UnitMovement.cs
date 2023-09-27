@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class UnitMovement : MonoBehaviour
 {
-    [SerializeField] float speed = 2;
+    public float Speed => _speed;
+
+    [SerializeField] float _speed = 2;
     [SerializeField] float smoothTime = 0.2f;
 
     Vector2 currentVelocity = Vector2.zero;
@@ -28,6 +30,6 @@ public class UnitMovement : MonoBehaviour
 
         targetVelocity = input.inputVector.normalized;
         currentVelocity = Vector2.SmoothDamp(currentVelocity, targetVelocity, ref currentVel, smoothTime);
-        transform.Translate((currentVelocity) * speed * Time.deltaTime);
+        transform.Translate((currentVelocity) * _speed * Time.deltaTime);
     }
 }
