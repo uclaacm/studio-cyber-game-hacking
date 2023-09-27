@@ -1,3 +1,4 @@
+using UnityEngine.InputSystem;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -38,9 +39,11 @@ public class MenuFunctions : MonoBehaviour
     private VisualElement LettersPanel;
     //private VisualElement VolumePanel;
     
-        // Start is called before the first frame update
+    // Start is called before the first frame update
     void Start()
     {
+        UnityEngine.Cursor.visible = true;
+
         var root = GetComponent<UIDocument>().rootVisualElement;
         Container = root.Q<VisualElement>("Container");
         //HowToWrapper = root.Q<VisualElement>("HowToWrapper");

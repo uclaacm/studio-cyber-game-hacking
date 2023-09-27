@@ -21,6 +21,7 @@ public class UIScripts : MonoBehaviour
     void Start()
     {
         spawners = GameObject.FindGameObjectsWithTag("Person"); // Finding the people that spawn
+        UnityEngine.Cursor.visible = true;
     }
     // Basic Scene Swapping Functionality
     public void navButton(string sceneName)

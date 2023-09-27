@@ -9,12 +9,14 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private float spawnRate = 1f;
+    public float SpawnRate => spawnRate;
     public static float startTime;
 
     // all types of enemies
     [SerializeField] private GameObject enemyPrefab;
 
     [SerializeField] private bool canSpawn = true;
+    public bool CanSpawn => canSpawn;
     [SerializeField] private Transform playerPos;
 
     private void Start() {

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 using TMPro;
 
@@ -14,10 +15,17 @@ public class playerHealth : MonoBehaviour
 
     //HACKABLE: Look into increasing maxHearts. Is it possible to never lose health
     public int hearts = 3;
+    public int Hearts => hearts;
     public int maxHearts = 3;
+    public int MaxHearts => maxHearts;
+
     [SerializeField] public HealthSystem hs;
     [SerializeField] private TMP_Text playerScoreCount;
     private int playerScore;
+    public int PlayerScore => playerScore;
+
+    private int points = 1;
+    public int Points => points;
 
     void Awake()
     {
@@ -56,12 +64,12 @@ public class playerHealth : MonoBehaviour
     // HACKABLE: Where is this function called? Can you change its behavior or call it more often?
     public void AddScore()
     {
-        playerScore += 1;
+        playerScore += points;
     }
 
-    // when you die, time stops 
+    // when you die, load the main menu 
     void Die()
     {
-      Time.timeScale = 0f;
+        SceneManager.LoadScene("MainMenu");
     }
 }

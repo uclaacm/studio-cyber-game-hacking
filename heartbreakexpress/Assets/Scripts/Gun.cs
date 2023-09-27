@@ -16,6 +16,8 @@ public class Gun : MonoBehaviour {
 
     bool cooldown = false;
     [SerializeField] float cooldownTime = 2f;
+    public float CooldownTime => cooldownTime;
+
     float canShoot = -1f;
     bool isScaling = false;
 
@@ -26,6 +28,7 @@ public class Gun : MonoBehaviour {
     Rigidbody2D envelopeRb;
     [SerializeField] Vector3 envSpawnOffset;
     [SerializeField] float fireSpeed = 15;
+    public float FireSpeed => fireSpeed;
     Quaternion envRotation = Quaternion.identity;
 
     public Vector2 target;
