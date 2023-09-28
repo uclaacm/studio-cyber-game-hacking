@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
-using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
@@ -43,6 +42,9 @@ public class DebugMenu : MonoBehaviour
         fireRateText = document.rootVisualElement.Q<Label>(k_fireRateText);
         currentProjectileText = document.rootVisualElement.Q<Label>(k_currentProjectileText);
         currentProjectileDamageText = document.rootVisualElement.Q<Label>(k_currentProjectileDamageText);
+
+        // NEW
+        statBoxContainer = document.rootVisualElement.Q<VisualElement>(k_stat_box_container);
     }
 
     // Update is called once per frame
@@ -57,6 +59,46 @@ public class DebugMenu : MonoBehaviour
         currentProjectileText.text = launcher?.Pool?.ProjectilePrefab?.name ?? "N/A";
         currentProjectileDamageText.text = launcher?.Pool?.ProjectilePrefab?.Damage.ToString() ?? "N/A";
 
+        // TODO: Loop through all stat box infos and call their updates
+    }
+
+
+    // NEW STUFF
+    [SerializeField] private VisualTreeAsset statBox;
+    private VisualElement statBoxContainer; // TODO: Find
+
+    public struct StatBoxInfo
+    {
+        public StatBoxInfo(TemplateContainer box, StatTracker tracker)
+        {
+            this.box = box;
+            this.tracker = tracker;
+        }
+        public TemplateContainer box;
+        public StatTracker tracker;
+    }
+    private const string k_stat_title = "title";
+    private const string k_stat_box_container = "stat-box-container";
+    private Dictionary<StatTracker, StatBoxInfo> statBoxInfos = new Dictionary<StatTracker, StatBoxInfo>();
+    public void AddStat(StatTracker tracker)
+    {
+        // Instantiate a new stat box
+        // Assign its name based on the tracker name
+        // Assign the tracker's element as a child of the stat box instance
+        // Store a reference to the tracker (and its container) in some data structure (prob set) 
+        //  -- this will allow us to update it from here and also remove it quickly
+
+        TemplateContainer box = statBox.Instantiate();
+        statBoxContainer.Add(box);
+        box.Q<Label>(k_stat_title).text = tracker.GetStatName();
+        box.Add(tracker.GetStatVisual());
+        statBoxInfos[tracker] = new StatBoxInfo(box: box, tracker: tracker);
+    }
+
+    public void RemoveStat(StatTracker tracker)
+    {
+        // TODO: Validation
+        statBoxContainer.Remove(statBoxInfos[tracker].box);
     }
 
     //public void AddStat(object obj, string propertyName, string statName)
