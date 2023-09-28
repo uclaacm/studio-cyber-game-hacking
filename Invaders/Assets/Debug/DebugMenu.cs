@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
+using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
@@ -54,5 +56,15 @@ public class DebugMenu : MonoBehaviour
         fireRateText.text = launcher?.ShotsPerSecond.ToString() ?? "N/A";
         currentProjectileText.text = launcher?.Pool?.ProjectilePrefab?.name ?? "N/A";
         currentProjectileDamageText.text = launcher?.Pool?.ProjectilePrefab?.Damage.ToString() ?? "N/A";
+
     }
+
+    //public void AddStat(object obj, string propertyName, string statName)
+    //{
+    //    PropertyInfo info = obj.GetType().GetProperty(propertyName);
+    //    if(info != null)
+    //    {
+    //        fireRateText.text = info.GetValue(obj).ToString();
+    //    }
+    //}
 }

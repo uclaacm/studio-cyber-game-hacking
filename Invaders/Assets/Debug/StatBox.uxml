@@ -1,0 +1,8 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <Style src="project://database/Assets/Debug/hacker_window.uss?fileID=7433441132597879392&amp;guid=05d09aa4ddbea334da0e9df444396514&amp;type=3#hacker_window" />
+    <ui:VisualElement name="stat-box" style="height: 75px; flex-direction: row; background-color: rgb(63, 63, 63); border-left-color: rgb(58, 58, 58); border-right-color: rgb(58, 58, 58); border-top-color: rgb(58, 58, 58); border-bottom-color: rgb(58, 58, 58); border-left-width: 2px; border-right-width: 2px; border-top-width: 2px; border-bottom-width: 2px; border-top-left-radius: 4px; border-bottom-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; padding-left: 8px; padding-right: 8px; margin-top: 3px; margin-bottom: 3px;">
+        <ui:Label text="&lt;STAT NAME&gt;" display-tooltip-when-elided="true" name="title" class="stat-title" />
+        <ui:Label display-tooltip-when-elided="true" name="spacer" style="color: rgb(72, 212, 0); -unity-text-align: middle-left; -unity-font-style: bold; font-size: 20px; flex-grow: 1;" />
+        <ui:VisualElement name="value-container" content-container="true" style="flex-direction: row; align-items: center;" />
+    </ui:VisualElement>
+</ui:UXML>

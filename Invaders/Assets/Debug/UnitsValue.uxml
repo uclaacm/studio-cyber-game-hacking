@@ -1,0 +1,6 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+    <ui:VisualElement name="value" style="flex-direction: row;">
+        <ui:Label text="7" display-tooltip-when-elided="true" name="text" class="hacker-stat-value" style="margin-right: 6px;" />
+        <ui:Label text="units/sec" display-tooltip-when-elided="true" name="units" class="hacker-stat-value" />
+    </ui:VisualElement>
+</ui:UXML>
