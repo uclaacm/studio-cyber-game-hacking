@@ -6,8 +6,9 @@ public class ProjectilePool : MonoBehaviour
 {
     public static ProjectilePool instance {get; private set;}
 
+    public Projectile ProjectilePrefab => _projectilePrefab;
 
-    [SerializeField] GameObject projectilePrefab;
+    [SerializeField] Projectile _projectilePrefab;
     Queue<GameObject> pool = new Queue<GameObject>();
 
     void Awake()
@@ -39,9 +40,9 @@ public class ProjectilePool : MonoBehaviour
 
     void AddObject()
     {
-        var newObject = GameObject.Instantiate(projectilePrefab,Vector3.zero,Quaternion.identity,this.transform);
-        newObject.SetActive(false);
-        pool.Enqueue(newObject);
+        var newObject = GameObject.Instantiate(_projectilePrefab,Vector3.zero,Quaternion.identity,this.transform);
+        newObject.gameObject.SetActive(false);
+        pool.Enqueue(newObject.gameObject);
 
         newObject.GetComponent<IPooledGameObject>().pool = this;        // Initialize the pool instance that the projectile will use
     }
