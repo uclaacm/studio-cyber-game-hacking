@@ -1,3 +1,4 @@
+using Mono.Cecil.Cil;
 using System.Collections;
 using System.Collections.Generic;
 using System.Net.NetworkInformation;
@@ -15,8 +16,17 @@ public class DebugMenu : MonoBehaviour
 {
     [SerializeField] private UIDocument document;
 
+#if UNITY_EDITOR
+    bool IS_HACKER_WINDOW_ENABLED = true;
+#else
+    bool IS_HACKER_WINDOW_ENABLED = false;
+#endif
+
+
     void OnEnable()
     {
+        document.rootVisualElement.visible = IS_HACKER_WINDOW_ENABLED;
+
         OnNewStatRequested += AddStat;
 
         // Do on enable to ensure reference is set up when registering to the channel
@@ -31,6 +41,11 @@ public class DebugMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(Input.GetKeyDown(KeyCode.M) && IS_HACKER_WINDOW_ENABLED)
+        {
+            document.rootVisualElement.visible = !document.rootVisualElement.visible;
+        }
+
         // Polling is pretty expensive since most of the time nothing changes that the UI cares about,
         // but it IS super simple to implement...
         foreach (StatTracker tracker in statBoxInfos.Keys)
