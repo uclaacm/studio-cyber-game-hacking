@@ -7,6 +7,9 @@ public class AmmoStat : MonoBehaviour
     [SerializeField] int maxCapacity = 100;
     [SerializeField] int bulletsLeft = 0;
 
+    public int MaxCapacity => maxCapacity;
+    public int BulletsLeft => bulletsLeft;
+
     public event System.Action<AmmoInfo> OnChangeBullets;
     
     void Awake()

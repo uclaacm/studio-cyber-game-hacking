@@ -8029,6 +8029,7 @@ GameObject:
   - component: {fileID: 1683556985}
   - component: {fileID: 1683556986}
   - component: {fileID: 1683556987}
+  - component: {fileID: 1683556988}
   m_Layer: 0
   m_Name: Stats
   m_TagString: Untagged
@@ -8083,6 +8084,22 @@ MonoBehaviour:
   _propertyOwner: {fileID: 1631314646}
   _valuePropertyName: Speed
   _units: units/sec
+--- !u!114 &1683556988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1683556984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc6674630947abf49b6632ce776f21e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _name: Ammo
+  _propertyOwner: {fileID: 16806550}
+  _currentValuePropertyName: BulletsLeft
+  _maxValuePropertyName: MaxCapacity
 --- !u!1 &1695629558
 GameObject:
   m_ObjectHideFlags: 0
