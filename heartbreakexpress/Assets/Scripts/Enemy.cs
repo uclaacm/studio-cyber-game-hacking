@@ -15,9 +15,6 @@ public class Enemy : MonoBehaviour
     private float startScale=.2f;
     private float endScale=1f;
 
-    private int dmg = 1;
-    public int Dmg => dmg;
-
     private float time;
 
     public Vector3 playerPos;
@@ -55,7 +52,7 @@ public class Enemy : MonoBehaviour
         // HACKABLE: can you avoid being damaged by enemies, even if they reach your position?
         if (timer > time)
         {
-          playerHealth.inst.DamagePlayer(dmg);
+          playerHealth.inst.DamagePlayer();
           Destroy(this.gameObject);
         }
     }

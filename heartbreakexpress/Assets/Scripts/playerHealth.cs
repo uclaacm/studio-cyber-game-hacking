@@ -24,6 +24,9 @@ public class playerHealth : MonoBehaviour
     private int playerScore;
     public int PlayerScore => playerScore;
 
+    private int dmg = 1;
+    public int Dmg => dmg;
+
     private int points = 1;
     public int Points => points;
 
@@ -41,7 +44,7 @@ public class playerHealth : MonoBehaviour
 
     // function for damaging the player and dying when the player has no more lives
     // redraws envelopes for each life lost
-    public void DamagePlayer(int dmg)
+    public void DamagePlayer()
     {
         if (hearts > 0)
         {

@@ -1428,6 +1428,7 @@ GameObject:
   m_Component:
   - component: {fileID: 620770315}
   - component: {fileID: 620770314}
+  - component: {fileID: 620770316}
   m_Layer: 0
   m_Name: EnemySpawner
   m_TagString: Untagged
@@ -1466,6 +1467,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &620770316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 620770313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 435006d1439456341b459123e0f9f518, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _name: Spawn Rate
+  _propertyOwner: {fileID: 620770314}
+  _valuePropertyName: SpawnRate
+  _units: sec
 --- !u!1 &954503134
 GameObject:
   m_ObjectHideFlags: 0
@@ -2265,6 +2282,9 @@ GameObject:
   - component: {fileID: 1655084957}
   - component: {fileID: 1655084956}
   - component: {fileID: 1655084958}
+  - component: {fileID: 1655084959}
+  - component: {fileID: 1655084960}
+  - component: {fileID: 1655084961}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -2319,6 +2339,54 @@ MonoBehaviour:
   _propertyOwner: {fileID: 1655084956}
   _currentValuePropertyName: Hearts
   _maxValuePropertyName: MaxHearts
+--- !u!114 &1655084959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1655084955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 435006d1439456341b459123e0f9f518, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _name: Points p/Enemy
+  _propertyOwner: {fileID: 1655084956}
+  _valuePropertyName: Points
+  _units: 
+--- !u!114 &1655084960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1655084955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 435006d1439456341b459123e0f9f518, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _name: Score
+  _propertyOwner: {fileID: 1655084956}
+  _valuePropertyName: PlayerScore
+  _units: points
+--- !u!114 &1655084961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1655084955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 435006d1439456341b459123e0f9f518, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _name: Enemy Dmg
+  _propertyOwner: {fileID: 1655084956}
+  _valuePropertyName: Dmg
+  _units: 
 --- !u!1 &1779576964 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3651335621134036902, guid: fb18abd62eef6ca45b7c0d5cb248cb50, type: 3}
@@ -2733,6 +2801,49 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2057976679 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4392307515240476494, guid: ae2a899a027887d49ab1a2b6c59039b7, type: 3}
+  m_PrefabInstance: {fileID: 105707431}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2057976668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7969af81ad4ad32489d8b5da3400865b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2057976681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2057976668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 435006d1439456341b459123e0f9f518, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _name: Envelope Fire Speed
+  _propertyOwner: {fileID: 2057976679}
+  _valuePropertyName: FireSpeed
+  _units: m/s
+--- !u!114 &2057976682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2057976668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 435006d1439456341b459123e0f9f518, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _name: Firing Cooldown Time
+  _propertyOwner: {fileID: 2057976679}
+  _valuePropertyName: CooldownTime
+  _units: sec
 --- !u!1 &2061403213
 GameObject:
   m_ObjectHideFlags: 0
