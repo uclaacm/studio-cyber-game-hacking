@@ -1,0 +1,39 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="StatBox" src="project://database/Assets/Debug/StatBox.uxml?fileID=9197481963319205126&amp;guid=8d7baafe4c2749b4ba1725a96cf5dd65&amp;type=3#StatBox" />
+    <ui:Template name="CapacityValue" src="project://database/Assets/Debug/CapacityValue.uxml?fileID=9197481963319205126&amp;guid=cac83d2566c29b24a8f0bdbcd8737c64&amp;type=3#CapacityValue" />
+    <ui:Template name="UnitsValue" src="project://database/Assets/Debug/UnitsValue.uxml?fileID=9197481963319205126&amp;guid=72dd3c77514910043bab5b2aff439f76&amp;type=3#UnitsValue" />
+    <Style src="project://database/Assets/Debug/hacker_window.uss?fileID=7433441132597879392&amp;guid=05d09aa4ddbea334da0e9df444396514&amp;type=3#hacker_window" />
+    <ui:VisualElement name="main" style="flex-grow: 0; -unity-background-image-tint-color: rgb(46, 46, 46); background-color: rgba(202, 202, 202, 0.88); border-top-left-radius: 7px; border-bottom-left-radius: 7px; border-top-right-radius: 7px; border-bottom-right-radius: 7px; padding-left: 10px; padding-right: 10px; padding-top: 10px; padding-bottom: 10px; width: 500px; height: 550px;">
+        <ui:VisualElement name="title-block">
+            <ui:Label text="Hacker Window" display-tooltip-when-elided="true" name="title" style="color: rgb(202, 0, 21); -unity-text-align: upper-center; font-size: 47px; -unity-font-style: bold;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="content-block">
+            <ui:VisualElement name="stats-container" class="stat-value-container">
+                <ui:Instance template="StatBox" name="health-stat" style="display: none;">
+                    <AttributeOverrides element-name="title" text="Health:" />
+                    <ui:Instance template="CapacityValue" name="CapacityValue" />
+                </ui:Instance>
+                <ui:Instance template="StatBox" name="movement-stat" style="display: none;">
+                    <AttributeOverrides element-name="title" text="Movement:" />
+                    <ui:Instance template="UnitsValue" name="UnitsValue" />
+                </ui:Instance>
+                <ui:Instance template="StatBox" name="fire-rate-stat" style="display: none;">
+                    <AttributeOverrides element-name="title" text="Fire Rate:" />
+                    <ui:Instance template="UnitsValue" name="UnitsValue">
+                        <AttributeOverrides element-name="units" text="bullets/sec" />
+                    </ui:Instance>
+                </ui:Instance>
+                <ui:VisualElement name="projectile-stat" style="height: 75px; flex-direction: row; background-color: rgb(63, 63, 63); border-left-color: rgb(58, 58, 58); border-right-color: rgb(58, 58, 58); border-top-color: rgb(58, 58, 58); border-bottom-color: rgb(58, 58, 58); border-left-width: 2px; border-right-width: 2px; border-top-width: 2px; border-bottom-width: 2px; border-top-left-radius: 4px; border-bottom-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; padding-left: 8px; padding-right: 8px; margin-top: 3px; margin-bottom: 3px; display: none;">
+                    <ui:Label text="Projectile:" display-tooltip-when-elided="true" name="current-projectile-title" class="hacker-stat-title" />
+                    <ui:Label display-tooltip-when-elided="true" name="current-projectile-spacer" style="color: rgb(72, 212, 0); -unity-text-align: middle-left; -unity-font-style: bold; font-size: 20px; flex-grow: 1;" />
+                    <ui:Label text="basic" display-tooltip-when-elided="true" name="current-projectile-text" class="hacker-stat-value" style="margin-right: 6px;" />
+                    <ui:Label text="(" display-tooltip-when-elided="true" name="projectile-damage-left-bracket" class="hacker-stat-value" />
+                    <ui:Label text="100" display-tooltip-when-elided="true" name="current-projectile-damage-text" class="hacker-stat-value" style="padding-right: 6px;" />
+                    <ui:Label text="dmg" display-tooltip-when-elided="true" name="projectile-damage-units" class="hacker-stat-value" />
+                    <ui:Label text=")" display-tooltip-when-elided="true" name="projectile-damage-right-bracket" class="hacker-stat-value" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="fill-block" style="flex-grow: 1;" />
+    </ui:VisualElement>
+</ui:UXML>

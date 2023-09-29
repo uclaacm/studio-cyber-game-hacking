@@ -1,0 +1,9 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:VisualElement name="value" style="flex-direction: row; align-items: center;">
+        <ui:Label text="(" display-tooltip-when-elided="true" name="left-bracket" />
+        <ui:Label text="50" display-tooltip-when-elided="true" name="current-text" />
+        <ui:Label text="/" display-tooltip-when-elided="true" name="divider" />
+        <ui:Label text="100" display-tooltip-when-elided="true" name="max-text" />
+        <ui:Label text=")" display-tooltip-when-elided="true" name="right-bracket" />
+    </ui:VisualElement>
+</ui:UXML>
