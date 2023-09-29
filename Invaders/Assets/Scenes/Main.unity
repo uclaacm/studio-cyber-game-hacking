@@ -6969,9 +6969,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   document: {fileID: 818678000}
-  health: {fileID: 1631314650}
-  movement: {fileID: 1631314646}
-  launcher: {fileID: 1631314648}
+  statBox: {fileID: 9197481963319205126, guid: 8d7baafe4c2749b4ba1725a96cf5dd65, type: 3}
 --- !u!1 &944469301
 GameObject:
   m_ObjectHideFlags: 0
@@ -7800,6 +7798,7 @@ GameObject:
   - component: {fileID: 1631314651}
   - component: {fileID: 1631314649}
   - component: {fileID: 1631314652}
+  - component: {fileID: 1631314654}
   m_Layer: 0
   m_Name: Shooter
   m_TagString: Player
@@ -7978,6 +7977,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77f961870c939ba4b9c75be790bb5661, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1631314654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1631314643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc6674630947abf49b6632ce776f21e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _name: Health
+  _propertyOwner: {fileID: 1631314650}
+  _currentValuePropertyName: CurrentHealth
+  _maxValuePropertyName: MaxHealth
 --- !u!1 &1669118871
 GameObject:
   m_ObjectHideFlags: 0

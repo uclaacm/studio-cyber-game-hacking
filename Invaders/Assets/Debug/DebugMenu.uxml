@@ -9,15 +9,15 @@
         </ui:VisualElement>
         <ui:VisualElement name="content-block">
             <ui:VisualElement name="stats-container" class="stat-value-container">
-                <ui:Instance template="StatBox" name="health-stat">
+                <ui:Instance template="StatBox" name="health-stat" style="display: none;">
                     <AttributeOverrides element-name="title" text="Health:" />
                     <ui:Instance template="CapacityValue" name="CapacityValue" />
                 </ui:Instance>
-                <ui:Instance template="StatBox" name="movement-stat">
+                <ui:Instance template="StatBox" name="movement-stat" style="display: none;">
                     <AttributeOverrides element-name="title" text="Movement:" />
                     <ui:Instance template="UnitsValue" name="UnitsValue" />
                 </ui:Instance>
-                <ui:Instance template="StatBox" name="fire-rate-stat">
+                <ui:Instance template="StatBox" name="fire-rate-stat" style="display: none;">
                     <AttributeOverrides element-name="title" text="Fire Rate:" />
                     <ui:Instance template="UnitsValue" name="UnitsValue">
                         <AttributeOverrides element-name="units" text="bullets/sec" />
