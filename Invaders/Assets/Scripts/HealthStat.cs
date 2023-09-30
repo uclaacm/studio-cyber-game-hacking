@@ -23,6 +23,12 @@ public class HealthStat : MonoBehaviour
             _currentHealth = 1;              // Unit cannot start off with less than 1 hp
     }
 
+    private void Start()
+    {
+        // Initialize listeners
+        OnUnitDamaged?.Invoke(new HealthInfo(_maxHealth, _currentHealth));
+    }
+
     public void TakeDamage(float dmg)
     {
         if(_currentHealth <= 0) {return;}    // We don't want to constantly be invoking the damaged/killed events even after the unit has died
