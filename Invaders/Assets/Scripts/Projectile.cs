@@ -69,16 +69,8 @@ public class Projectile : MonoBehaviour, IPooledGameObject
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        // Is there a better way for checking what type of thing we collided with? I thought Smallberg said something about
-        // how attempting to a cast an object to a certain type and then checking to see if it returned a null value was costly
-        BulletEater bulletEater = other.GetComponent<BulletEater>();
         HealthStat healthStat = other.GetComponent<HealthStat>();
-        if(bulletEater != null)
-        {
-            bulletEater.FeedBullets(bulletValue);
-            Vanish();
-        }
-        else if(healthStat != null)
+        if(healthStat != null)
         {
             if(other.CompareTag(_noDamageTag)) {return;}        // Don't do anything if the object is tagged with an ignore damage tag
 

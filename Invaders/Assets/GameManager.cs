@@ -5,8 +5,7 @@ using UnityEngine.SceneManagement;
 using TMPro;
 public class GameManager : MonoBehaviour
 {
-    public HealthStat targetHealth1;
-    public HealthStat targetHealth2;
+    public HealthStat playerHealth;
     public Animator animator;
 
     [Header ("Score")]
@@ -18,8 +17,7 @@ public class GameManager : MonoBehaviour
     {
 
         score=0;
-        targetHealth1.OnUnitKilled += GameOver;
-        targetHealth2.OnUnitKilled += GameOver;
+        playerHealth.OnUnitKilled += GameOver;
     }
 
     // Update is called once per frame

@@ -4,12 +4,8 @@ using UnityEngine;
 
 public class ProjectileLauncherController : MonoBehaviour
 {
-    ProjectileLauncher projectileLauncher;
-
-    void Awake()
-    {
-        projectileLauncher = GetComponent<ProjectileLauncher>();
-    }
+    [SerializeField] private ProjectileLauncher projectileLauncher;
+    [SerializeField] private AmmoRefiller refiller;
 
     // Update is called once per frame
     void Update()
@@ -17,7 +13,11 @@ public class ProjectileLauncherController : MonoBehaviour
         if(!Input.GetKey(KeyCode.Mouse0))
             projectileLauncher.SetLockState(true);
         else
+        {
             projectileLauncher.SetLockState(false);
+            refiller.TemporarilyDisable();
+        }
+            
 
     }
 }
