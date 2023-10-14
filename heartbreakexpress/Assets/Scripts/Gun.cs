@@ -6,7 +6,6 @@ using UnityEngine.InputSystem;
 using TMPro;
 using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
-using static UnityEditor.PlayerSettings;
 
 public class Gun : MonoBehaviour {
 
